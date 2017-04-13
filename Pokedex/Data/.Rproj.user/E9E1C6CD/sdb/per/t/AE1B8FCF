@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1469996390911.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "AE1B8FCF",
+    "lastKnownWriteTime" : 7340097,
+    "last_content_update" : -2147483648,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "e9kxvbguxu",
+        "caption" : "pokemon_db",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=pokemon_db&cache_key=e9kxvbguxu",
+        "displayedObservations" : 811,
+        "environment" : "",
+        "object" : "pokemon_db",
+        "totalObservations" : 811,
+        "variables" : 21
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1470003971765.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "B95052E9",
+    "lastKnownWriteTime" : 1852140917,
+    "last_content_update" : -2147483648,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "py17l08sx1",
+        "caption" : "pokenests",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=pokenests&cache_key=py17l08sx1",
+        "displayedObservations" : "159",
+        "environment" : "",
+        "object" : "pokenests",
+        "totalObservations" : "159",
+        "variables" : "43"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

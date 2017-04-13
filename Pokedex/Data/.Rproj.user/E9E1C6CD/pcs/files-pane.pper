@@ -1,0 +1,9 @@
+{
+    "path" : "~/Numerico/Pokedex/Data",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
