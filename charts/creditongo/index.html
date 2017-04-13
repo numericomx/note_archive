@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<script src="js/d3.min.js"></script>
+		<script src="js/underscore.min.js"></script>
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<style>
+
+		@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+		@import url(http://fonts.googleapis.com/css?family=Merriweather);
+		@import url(https://fonts.googleapis.com/css?family=Lato);
+		
+
+		.axis path,
+		.axis line{
+		  stroke-width: 1px ;
+		  fill:none;
+		  stroke: #999999;
+		  shape-rendering: crispEdges;
+		}
+		
+		.axis text{
+		  fill: #505050;
+		  font-family: 'Lato', sans-serif;
+		  font-size:11px;
+		  font-weight: normal;
+		}
+		
+		.label{
+		  fill: #505050;
+		  font-family: 'Lato', sans-serif;
+		  font-size:15px;
+		  font-weight: normal;
+		}
+
+		.dot {
+		  stroke-width:.5px;
+		  stroke: #aaa;
+		}
+		
+		#fuente{
+			padding-top:5px;
+			padding-left:5px;
+			font-size:10px;
+			color: #505050;
+			font-family: 'Merriweather', serif; 
+		}
+		
+		#viz{
+			padding-top:7px;
+		}
+		
+		#info {
+			padding-top: 5px;
+			padding-left: 5px;
+			font-size: 12px;
+			color: #505050;
+			font-family: 'Lato', serif;
+			width: 320px;
+			vertical-align: middle;
+			margin-left: 10px;
+		}
+		
+
+h1,h2{
+			margin-top:10px;
+			margin-bottom:8px;
+		}
+		
+		h1{
+			width:480px;
+			padding-left:5px;
+			font-size:24px;
+			fill: #333333;
+			font-family: 'Merriweather', serif;
+			text-align: left;
+		}
+		
+		h2{
+			width:480px;
+			padding-left:5px;
+			color: #505050;
+			font-family: 'Merriweather', sans-serif;
+			font-size:14px;
+			font-weight: normal;
+		}
+		
+		
+		h4{
+			color: #505050;
+			font-family: 'Lato', sans-serif;
+			font-size:15px;
+			font-weight: normal;
+		}
+		
+		p {
+			margin: 0 0 5px;
+		}
+		
+		#data {
+			margin-left: 20px;
+			padding-left: 5px;
+			padding-top: 5px;
+			border: 2px solid gray;
+			vertical-align: middle;
+			width: 300px;
+		}
+		
+		#guide{
+			text-align:right;
+			margin-left:60px;
+			width:215px;
+		}
+
+		</style>
+	</head>
+	<body style="max-width:490px;">
+		<h1>¿Cuál tarjeta me conviene más?</h1>
+		<h2>Cada punto es una tarjeta. Pósate sobre alguno para obtener su información.</h2>
+		<div>
+			<table>
+				<tr>
+					<td id="info" >
+						<div id="data">
+							<p class="data" id="name"><b>Tarjeta:</b> </p>
+							<p id="cat"><b>CAT:</b> </p>
+							<p id="minIncome"><b>Ingresos mínimos:</b> </p>
+						</div>
+					</td>
+					<td id="guide">
+					 <img src="img/guide.png"></img>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="viz" style="max-width:490px;">
+			<table>
+				<tr>
+					<td id="s1"></td>
+					<td id="s2"></td>
+					<td id="s3"></td>
+				</tr>
+				<tr>
+					<td id="s4"></td>
+					<td id="s5"></td>
+					<td id="s6"></td>
+				</tr>
+				<tr>
+					<td id="s7"></td>
+					<td id="s8"></td>
+					<td id="s9"></td>
+				</tr>
+			</table>
+		</div>
+		
+		<p id="fuente">Fuente: Numérico con datos de Condusef. </p>
+	<script>
+
+	var margin = {top: 10, right: 10, bottom: 18, left: 40, inner:10},
+			width = 490-margin.left-margin.right,
+			height = 320-margin.top-margin.bottom,
+			cellWidth = (width/3)-margin.inner,
+			cellHeight = (height/3);
+
+	var x = d3.scale.linear()
+		.range([0, cellWidth]);
+	
+	var xRange = function(min,max){return d3.scale.linear().range([min,max]);}
+
+	var y = d3.scale.linear()
+		.range([cellHeight,0]);
+		
+	var yRange = function(max,min){return d3.scale.linear().range([max,min]);}
+
+	//var color = d3.scale.category10();
+	
+	var color = function(d){
+		var banks=["American Express","Banamex","Bancomer","Banorte","HSBC","Inbursa","Otro","Santander","Scotiabank"];
+		//var color=["#38A67E","#BF0404","#00BCD4","#9C27B0","#FF5722","#122940","#E8CF0C","#8BC34A","#E91E63"];
+		var color=["#38A67E","#003082","#00529B","#C8112F","#FC0204","#0C1E3C","#03A9F4","#FF0000","#ED1B2E"];
+		return color[_.indexOf(banks,d)];
+	}
+	
+	var xMinMax =d3.svg.axis()
+		.scale(xRange)
+		.orient("top")
+		.ticks(0);
+	
+	var xAxNL = d3.svg.axis()
+		.scale(x)
+		.orient("top")
+		.ticks(0);
+	
+	var yAxNL = d3.svg.axis()
+		.scale(y)
+		.orient("right")
+		.ticks(0);
+	
+	var yMinMax =d3.svg.axis()
+		.scale(yRange)
+		.orient("right")
+		.ticks(0);
+	
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("top")
+		.ticks(4)
+		.tickFormat(d3.format(".0%"));
+		
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("right")
+		.ticks(5)
+		.tickFormat(d3.format("$s"));
+
+	/**************** First row of grid *************************/
+	var s1 = d3.select("#s1").append("svg")
+		.attr("width", cellWidth+margin.left+margin.inner)
+		.attr("height", cellHeight+margin.top+margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + (5+margin.left) + "," + margin.top + ")");
+	
+	var s2 = d3.select("#s2").append("svg")
+		.attr("width", cellWidth+margin.inner)
+		.attr("height", cellHeight+margin.top+margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(5,"+margin.top + ")");
+	
+	var s3 = d3.select("#s3").append("svg")
+		.attr("width", cellWidth+margin.right)
+		.attr("height", cellHeight+margin.top+margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(5,"+margin.top + ")");
+	/**************** Second row of grid *************************/
+	var s4 = d3.select("#s4").append("svg")
+		.attr("width", cellWidth+margin.left+margin.inner)
+		.attr("height", cellHeight+margin.top+margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(" + (5+margin.left) + "," + margin.top + ")");
+	
+	var s5 = d3.select("#s5").append("svg")
+		.attr("width", cellWidth+margin.inner)
+		.attr("height", cellHeight+margin.top+margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(5,"+margin.top + ")");
+	
+	var s6 = d3.select("#s6").append("svg")
+		.attr("width", cellWidth+margin.right)
+		.attr("height", cellHeight+margin.top+margin.bottom)
+	  .append("g")
+		.attr("transform", "translate(5,"+margin.top + ")");
+	
+	/**************** Third row of grid *************************/
+	var s7 = d3.select("#s7").append("svg")
+		.attr("width", cellWidth+margin.left+margin.inner)
+		.attr("height", cellHeight+margin.top+margin.bottom+margin.inner)
+	  .append("g")
+		.attr("transform", "translate(" +(5+margin.left) + "," + margin.top + ")");
+	
+	var s8 = d3.select("#s8").append("svg")
+		.attr("width", cellWidth+margin.inner)
+		.attr("height", cellHeight+margin.top+margin.bottom+margin.inner)
+	  .append("g")
+		.attr("transform", "translate(5,"+margin.top + ")");
+	
+	var s9 = d3.select("#s9").append("svg")
+		.attr("width", cellWidth+margin.right)
+		.attr("height", cellHeight+margin.top+margin.bottom+margin.inner)
+	  .append("g")
+		.attr("transform", "translate(5,"+margin.top + ")");	
+	
+	/*****************************************************************************/
+
+	d3.csv("data/bdLim60k.csv", 
+		function(row){return {bankType: row.bankType, bankName: row.bank, name: row.name, minIncome: +row.income, cat:+row.CAT, bankCategory:row.importantBank}},
+		function(csv) {
+		  var bancomer = _.where(csv, {bankCategory:"Bancomer"});
+		  var hsbc = _.where(csv, {bankCategory:"HSBC"});
+		  var otro = _.where(csv, {bankCategory:"Otro"});
+		  var scotiabank = _.where(csv, {bankCategory:"Scotiabank"});
+		  var banorte = _.where(csv, {bankCategory:"Banorte"});
+		  var american = _.where(csv, {bankCategory:"American Express"});
+		  var inbursa = _.where(csv, {bankCategory:"Inbursa"});
+		  var banamex = _.where(csv, {bankCategory:"Banamex"});
+		  var santander = _.where(csv, {bankCategory:"Santander"});
+		  
+		  x.domain(d3.extent(csv, function(d) { return d.cat; })).nice();
+		  y.domain(d3.extent(csv, function(d) { return d.minIncome; })).nice();
+		
+		/************************* Drawing first row of grid ***************************/
+		  s1.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0," + (cellHeight+10) + ")")
+			  .call(xAxNL);
+		  
+		  s1.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/12)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("American Express");		  
+
+		  s1.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxis)
+			  .selectAll("text")
+			  .attr("dx",-5)
+			  .attr("x",0)
+			  .style("text-anchor","end");
+
+		  s1.selectAll(".dot")
+			  .data(american)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+		  
+		/***********************************************************************************/
+		  s2.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0,"+ (cellHeight+10) + ")")
+			  .call(xAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+			  
+		  s2.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/3.5)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("Banamex");
+		
+		  s2.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+		
+		  s2.selectAll(".dot")
+			  .data(banamex)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+		/***********************************************************************************/
+		  s3.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0,"+ (cellHeight+10) + ")")
+			  .call(xAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+		  
+		  s3.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/4)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("Bancomer");
+
+		  s3.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+			  
+		  s3.selectAll(".dot")
+			  .data(bancomer)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+			  
+		/************************* Drawing second row of grid ***************************/
+		  s4.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0," +(cellHeight+10) + ")")
+			  .call(xAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+
+		  s4.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/3.5)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("Banorte");
+		
+		  s4.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxis)
+			  .selectAll("text")
+			  .attr("dx",-5)
+			  .attr("x",0)
+			  .style("text-anchor","end");
+
+		  s4.selectAll(".dot")
+			  .data(banorte)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+		  
+		/***********************************************************************************/
+		  s5.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0,"+ (cellHeight+10) + ")")
+			  .call(xAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+		
+		  s5.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/2.7)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("HSBC");
+
+		  s5.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);	  
+			  
+		  s5.selectAll(".dot")
+			  .data(hsbc)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+		/***********************************************************************************/
+		  s6.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0,"+ (cellHeight+10) + ")")
+			  .call(xAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+
+		  s6.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/3)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("Inbursa");
+		
+		  s6.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);	  
+			  
+		  s6.selectAll(".dot")
+			  .data(inbursa)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+		/************************* Drawing second row of grid ***************************/
+		  s7.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0," + (cellHeight+10) + ")")
+			  .call(xAxis)
+			.selectAll("text")
+				.attr("dy","0.5em")
+				.attr("y",10);
+
+		  s7.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/2.7)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("Otro");
+				
+		  s7.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxis)
+			  .selectAll("text")
+			  .attr("dx",-5)
+			  .attr("x",0)
+			  .style("text-anchor","end");
+
+		  s7.selectAll(".dot")
+			  .data(otro)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+		  
+		/***********************************************************************************/
+		  s8.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0,"+ (cellHeight+10) + ")")
+			  .call(xAxis)
+			.selectAll("text")
+				.attr("dy","0.5em")
+				.attr("y",10);
+
+		  s8.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/4)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("Santander");
+				
+		  s8.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);		
+				
+		  s8.selectAll(".dot")
+			  .data(santander)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .style("fill", function(d) { return color(d.bankCategory); });
+		/***********************************************************************************/
+		  s9.append("g")
+			  .attr("class", "x axis")
+			  .attr("transform", "translate(0,"+ (cellHeight+10) + ")")
+			  .call(xAxis)
+			.selectAll("text")
+				.attr("dy","0.5em")
+				.attr("y",10);
+
+		  s9.append("text")
+			  .attr("class", "label")
+			  .attr("x", cellWidth/3.5)
+			  .attr("y", 5)
+			  .style("fill","#505050")
+			  .text("Scotiabank");
+				
+		  s9.append("g")
+			  .attr("class", "y axis")
+			  .attr("transform", "translate(-4,0)")
+			  .call(yAxNL)
+			  .selectAll("text")
+			  .style("opacity",0);
+				
+		  s9.selectAll(".dot")
+			  .data(scotiabank)
+			.enter().append("circle")
+			  .attr("class", "dot")
+			  .attr("r", 5)
+			  .attr("cx", function(d) { return x(d.cat); })
+			  .attr("cy", function(d) { return y(d.minIncome); })
+			  .attr("cat",function(d){return d.cat;})
+			  .style("fill", function(d) { return color(d.bankCategory); });
+					  
+		/***********************************************************************************/
+		
+		var info = d3.select("#info");
+		var format = d3.format(".2f");
+		var incomeFormat = d3.format("$,");
+		function mouseOver(d,i){
+			info.select("#name").html("<b>Tarjeta:</b> "+d.name)
+			info.select("#cat").html("<b>CAT:</b> "+format(100*d.cat)+"%");
+			info.select("#minIncome").html("<b>Ingresos mínimos:</b> "+incomeFormat(d.minIncome));
+			d3.selectAll(".dot").style("opacity",.3);
+			d3.select(this).style("opacity",1.0);
+			d3.select("#data").style("border-color", color(d.bankCategory));
+		}
+		
+		function mouseOut(d,i){
+			info.select("#name").html("<b>Tarjeta:</b> ")
+			info.select("#cat").html("<b>CAT:</b> ");
+			info.select("#minIncome").html("<b>Ingresos mínimos:</b> ");
+			d3.select("#data").style("border-color", "gray");
+			d3.selectAll(".dot").style("opacity",1);
+			
+		}
+		
+		var chart = d3.selectAll(".dot").on("mouseover", mouseOver)
+								.on("mouseout", mouseOut);	
+	});
+	</script>
+	</body>
+</html>
+	
