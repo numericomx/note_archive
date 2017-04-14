@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Numérico explica: ¿Quiénes se apretaron el cinturón?</title>
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="css/numerico-bubble.css">
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.9.1.js"></script>
+
+    <!-- d3 Charting Scripts -->
+   <script charset="utf-8" src="http://d3js.org/d3.v3.js"></script>
+ 
+
+    <!-- Numerico Scripts -->
+    <script src="js/NumericoData.js"></script>
+    <script src="js/NumericoBubbleChart.js"></script>
+
+</head>
+<body id="interactiveNumerico">
+<div id="interactiveFreeFormMain">
+     <div id="bubbleTitle"><center><em>Una verdadera reingeniería de programas de gobierno</em></center></div>
+    <div id="numericoContainer" class="numerico">
+        <div id="numericoChartFrame">
+            <div id="numericoChart">
+                <div class="numerico-navBar">
+                    <ul class="numerico-navigation">
+                        <li id="numericoNavAll">Todos los programas</li>
+                        <li id="numericoNavType">Programas por secretaría</li>
+                        <li id="numericoNavNew">Cambios en el presupuesto por secretaría</li>
+                    </ul>
+                </div>
+                <div id="numerico-tooltip">
+                    <div id="numerico-tooltipContainer">
+                        <div class="numerico-department"></div>
+                        <div class="numerico-rule"></div>
+                        <div class="numerico-name"></div>
+                        <div class="numerico-discretion"></div>
+                        <div class="numerico-valuesContainer">
+                            <span class="numerico-value"></span>
+                            <span class="numerico-change"></span>
+                        </div>
+                        <div class="numericoChart"></div>
+                        <div class="numerico-tail"></div>
+                    </div>
+                </div>
+                <div id="numerico-overlays">
+                    <div class="numerico-overlay" id="numerico-totalOverlay" >
+                        <div class="numerico-overview">
+                            <h5>Programas presupuestados en el Ramo Administrativo</h5>
+                            <p>Total del presupuesto del ramo: 1.22 billones de pesos (6.4% del PIB).</p>
+                           
+                        </div>
+                       <div class="numerico-aside">
+					   <h3>Más rojo <br/>=<br/> Mayor recorte presupuestal</h3>
+					   </div>
+                        <div id="numerico-colorKey">
+						<p>&nbsp;</p>
+                            <p>El tamaño del círculo indica el presupuesto asignado a cada programa en millones de pesos.</p>
+                            <div id="numerico-sizeKey">
+                                <div style="left:50px;top:2px;width:55px;" class="numerico-circleKeyLabel"><span style="left:60px;">60,000</span></div>
+                                <div style="left:50px;top:25px;width:55px;" class="numerico-circleKeyLabel"><span style="left:60px;">15,000</span></div>
+                                <div style="left:50px;top:45px;width:55px;" class="numerico-circleKeyLabel"><span style="left:60px;">200</span></div>
+                                <svg id="numerico-scaleKey"></svg>
+                            </div>
+						
+                            <p>El color muestra el cambio porcentual real respecto al año anterior.</p>
+                            <ul class="numerico-colorSwatches">
+                   
+                                <li class="change-decrease2"></li>
+                                <li class="change-decrease1"></li>
+								<li class="change-same"></li>
+                                <li class="change-increase1"></li>
+                                <li class="change-increase2"></li>
+                               
+                            </ul>
+                            <ul class="numerico-colorTicks">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+								<li></li>
+                           
+                      
+                            </ul>
+                            <ul class="numerico-colorLabels">
+                                <li>&ndash;50</li>
+                                <li>&ndash;5</li>
+                                <li>+5</li>
+                                <li>50</li>
+                            </ul>
+							<div style="background-color: #F3F9BD;width:82%"><p><b>Nuevos programas</b></p></div>
+					
+                        </div>
+                    </div>
+                    <div class="numerico-overlay" id="numerico-relevantOverlay" >
+                        <div class="numerico-relevantExplainer">
+                        </div>
+                        <div class="numerico-relevantAside">
+                       
+                        </div>
+                        <div class="numerico-discretionaryExplainer">
+                        </div>
+                     
+                    </div>
+                    <div class="numerico-overlay" id="numerico-discretionaryOverlay" >
+                      
+                    </div>
+                    <div class="numerico-overlay" id="numerico-departmentOverlay" >
+                    </div>
+                    
+                </div>
+                <div id="numerico-chartCanvas" ></div>
+            </div>
+			
+        </div>
+    </div>
+</div><!--close #page -->
+
+
+
+</body>
+</html>
+
+

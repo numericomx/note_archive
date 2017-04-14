@@ -1,0 +1,284 @@
+variable,px_change,category,weight,incidence
+Tomate verde,-21.29548455,"Alimentos, bebidas y tabaco",0.13051,-0.027792737
+Carne de cerdo,-10.87630479,"Alimentos, bebidas y tabaco",0.69353,-0.075430437
+Huevo,-9.569413815,"Alimentos, bebidas y tabaco",0.61382,-0.058738976
+Papa y otros tubérculos,-8.063223954,"Alimentos, bebidas y tabaco",0.24697,-0.019913744
+Aguacate,-7.536158335,"Alimentos, bebidas y tabaco",0.11338,-0.008544496
+Camarón,-7.338485481,"Alimentos, bebidas y tabaco",0.08757,-0.006426312
+Piña,-7.180544645,"Alimentos, bebidas y tabaco",0.01387,-0.000995942
+Calabacita,-4.027104745,"Alimentos, bebidas y tabaco",0.1265,-0.005094288
+Masa y harinas de maíz,-3.363743127,"Alimentos, bebidas y tabaco",0.05025,-0.001690281
+Aceites y grasas vegetales comestibles,-2.914167834,"Alimentos, bebidas y tabaco",0.24481,-0.007134174
+Manzana,-2.903839613,"Alimentos, bebidas y tabaco",0.22725,-0.006598976
+Pan dulce,-2.044900484,"Alimentos, bebidas y tabaco",0.53265,-0.010892162
+Chocolate,-1.818391171,"Alimentos, bebidas y tabaco",0.04886,-0.000888466
+Gelatina en polvo,-1.818391171,"Alimentos, bebidas y tabaco",0.02674,-0.000486238
+Mantequilla,-1.391283992,"Alimentos, bebidas y tabaco",0.02666,-0.000370916
+Concentrados de pollo y sal,-0.852251364,"Alimentos, bebidas y tabaco",0.04673,-0.000398257
+Frijol,-0.813116629,"Alimentos, bebidas y tabaco",0.28024,-0.002278678
+Frijol procesado,-0.813116629,"Alimentos, bebidas y tabaco",0.05432,-0.000441685
+Plátanos,-0.677830587,"Alimentos, bebidas y tabaco",0.17018,-0.001153532
+Pollo,-0.516584446,"Alimentos, bebidas y tabaco",1.32296,-0.006834206
+Pollos rostizados,-0.516584446,"Alimentos, bebidas y tabaco",0.3891,-0.00201003
+Queso amarillo,-0.229083056,"Alimentos, bebidas y tabaco",0.02333,-5.34E-05
+Queso manchego o Chihuahua,-0.204629319,"Alimentos, bebidas y tabaco",0.08501,-0.000173955
+Durazno,-0.114880325,"Alimentos, bebidas y tabaco",0.05596,-6.43E-05
+Pera,-0.07835802,"Alimentos, bebidas y tabaco",0.03261,-2.56E-05
+"Pasteles, pastelillos y pan dulce empaquetado",0.322691679,"Alimentos, bebidas y tabaco",0.05502,0.000177545
+Tostadas,0.394653292,"Alimentos, bebidas y tabaco",0.06883,0.00027164
+Pan blanco,0.448242638,"Alimentos, bebidas y tabaco",0.29497,0.001322181
+Pastelillos y pasteles a granel,0.554069987,"Alimentos, bebidas y tabaco",0.04887,0.000270774
+Tortilla de maíz,0.578315556,"Alimentos, bebidas y tabaco",1.53994,0.008905713
+Ron,0.666715045,"Alimentos, bebidas y tabaco",0.04451,0.000296755
+Tortillas de harina de trigo,0.818048079,"Alimentos, bebidas y tabaco",0.09422,0.000770765
+Atún y sardina en lata,1.101577776,"Alimentos, bebidas y tabaco",0.1331,0.0014662
+Brandy,1.150278293,"Alimentos, bebidas y tabaco",0.06211,0.000714438
+Frutas y legumbres preparadas para bebés,1.204009876,"Alimentos, bebidas y tabaco",0.01067,0.000128468
+Cereales en hojuelas,1.255928634,"Alimentos, bebidas y tabaco",0.20619,0.002589599
+Café tostado,1.28601529,"Alimentos, bebidas y tabaco",0.03036,0.000390434
+Otros pescados y mariscos en conserva,1.302269497,"Alimentos, bebidas y tabaco",0.03705,0.000482491
+Pescado,1.302269497,"Alimentos, bebidas y tabaco",0.3226,0.004201121
+Galletas,1.353594793,"Alimentos, bebidas y tabaco",0.16574,0.002243448
+Harinas de trigo,1.353594793,"Alimentos, bebidas y tabaco",0.03273,0.000443032
+Jugos o néctares envasados,1.418809705,"Alimentos, bebidas y tabaco",0.20285,0.002878055
+Crema de leche,1.458796086,"Alimentos, bebidas y tabaco",0.12038,0.001756099
+Queso fresco,1.538995316,"Alimentos, bebidas y tabaco",0.22223,0.003420109
+Otros quesos,1.544152863,"Alimentos, bebidas y tabaco",0.16603,0.002563757
+Queso Oaxaca o asadero,1.781027998,"Alimentos, bebidas y tabaco",0.18496,0.003294189
+Carnitas,1.870887827,"Alimentos, bebidas y tabaco",0.12866,0.002407084
+Yogurt,1.917744917,"Alimentos, bebidas y tabaco",0.2185,0.004190273
+"Chiles envasados, moles y salsas",2.11650189,"Alimentos, bebidas y tabaco",0.10094,0.002136397
+"Leche evaporada, condensada y maternizada",2.15944031,"Alimentos, bebidas y tabaco",0.06021,0.001300199
+Cerveza,2.192178001,"Alimentos, bebidas y tabaco",1.55446,0.03407653
+Otros alimentos cocinados,2.232096476,"Alimentos, bebidas y tabaco",0.94088,0.021001349
+Helados,2.370339338,"Alimentos, bebidas y tabaco",0.03591,0.000851189
+Leche pasteurizada y fresca,2.423939634,"Alimentos, bebidas y tabaco",1.42876,0.03463228
+Café soluble,2.500789498,"Alimentos, bebidas y tabaco",0.11735,0.002934676
+Agua embotellada,2.56092671,"Alimentos, bebidas y tabaco",0.39966,0.010235
+Refrescos envasados,2.56092671,"Alimentos, bebidas y tabaco",1.0909,0.027937149
+Chayote,2.585912352,"Alimentos, bebidas y tabaco",0.08392,0.002170098
+Arroz,2.876960952,"Alimentos, bebidas y tabaco",0.14922,0.004293001
+Tequila,2.951154901,"Alimentos, bebidas y tabaco",0.15409,0.004547435
+Verduras envasadas,2.960386801,"Alimentos, bebidas y tabaco",0.05922,0.001753141
+Pan de caja,3.081425969,"Alimentos, bebidas y tabaco",0.19644,0.006053153
+Vino de mesa,3.319433776,"Alimentos, bebidas y tabaco",0.07769,0.002578868
+Sopas instantáneas y puré de tomate,3.398129518,"Alimentos, bebidas y tabaco",0.01531,0.000520254
+Jamón,3.656366412,"Alimentos, bebidas y tabaco",0.19651,0.007185126
+Mayonesa y mostaza,3.738933886,"Alimentos, bebidas y tabaco",0.06172,0.00230767
+Otros condimentos,3.834584566,"Alimentos, bebidas y tabaco",0.02258,0.000865849
+Tocino,3.99073914,"Alimentos, bebidas y tabaco",0.01828,0.000729507
+Cigarrillos,4.108868483,"Alimentos, bebidas y tabaco",0.68478,0.02813671
+Pizzas,4.119559891,"Alimentos, bebidas y tabaco",0.16161,0.006657621
+Leche en polvo,4.2430302,"Alimentos, bebidas y tabaco",0.10708,0.004543437
+Otros licores,4.271190855,"Alimentos, bebidas y tabaco",0.05519,0.00235727
+Otras conservas de frutas,4.391289748,"Alimentos, bebidas y tabaco",0.02216,0.00097311
+Papas fritas y similares,4.539878266,"Alimentos, bebidas y tabaco",0.0742,0.00336859
+"Dulces, cajetas y miel",4.562326144,"Alimentos, bebidas y tabaco",0.04522,0.002063084
+Nopales,4.80483176,"Alimentos, bebidas y tabaco",0.06659,0.003199537
+Chorizo,4.964363729,"Alimentos, bebidas y tabaco",0.45345,0.022510907
+Concentrados para refrescos,5.03820678,"Alimentos, bebidas y tabaco",0.09139,0.004604417
+Ejotes,5.038245094,"Alimentos, bebidas y tabaco",0.02989,0.001505931
+Otras legumbres,5.065310847,"Alimentos, bebidas y tabaco",0.20423,0.010344884
+Otras legumbres secas,5.065310847,"Alimentos, bebidas y tabaco",0.05603,0.002838094
+Salchichas,5.177216642,"Alimentos, bebidas y tabaco",0.12008,0.006216802
+Melón,5.390230676,"Alimentos, bebidas y tabaco",0.04624,0.002492443
+Maíz,6.056931741,"Alimentos, bebidas y tabaco",0.03634,0.002201089
+Pasta para sopa,6.711633381,"Alimentos, bebidas y tabaco",0.12387,0.0083137
+Papaya,7.201556598,"Alimentos, bebidas y tabaco",0.07808,0.005622975
+Otros mariscos,7.438524424,"Alimentos, bebidas y tabaco",0.01759,0.001308436
+Carnes secas y otros embutidos,7.505148527,"Alimentos, bebidas y tabaco",0.04638,0.003480888
+Sandía,7.854811357,"Alimentos, bebidas y tabaco",0.02538,0.001993551
+Azúcar,8.789503044,"Alimentos, bebidas y tabaco",0.18039,0.015855385
+Zanahoria,9.38156542,"Alimentos, bebidas y tabaco",0.06924,0.006495796
+Naranja,11.16457784,"Alimentos, bebidas y tabaco",0.03518,0.003927698
+Chile serrano,11.32946907,"Alimentos, bebidas y tabaco",0.07644,0.008660246
+Barbacoa o birria,11.83167887,"Alimentos, bebidas y tabaco",0.17775,0.021030809
+Guayaba,11.8613673,"Alimentos, bebidas y tabaco",0.04095,0.00485723
+Cebolla,12.33005085,"Alimentos, bebidas y tabaco",0.16968,0.02092163
+Lechuga y col,12.86543556,"Alimentos, bebidas y tabaco",0.10468,0.013467538
+Otras Frutas,14.33778858,"Alimentos, bebidas y tabaco",0.13268,0.019023378
+Carne de res,14.4903969,"Alimentos, bebidas y tabaco",1.77624,0.257384226
+Chícharo,14.95865229,"Alimentos, bebidas y tabaco",0.01928,0.002884028
+Uva,15.13747255,"Alimentos, bebidas y tabaco",0.07354,0.011132097
+Chile seco,15.58352196,"Alimentos, bebidas y tabaco",0.02655,0.004137425
+Vísceras de res,15.71427574,"Alimentos, bebidas y tabaco",0.04028,0.00632971
+Jitomate,16.36668358,"Alimentos, bebidas y tabaco",0.49454,0.080939797
+Chile poblano,17.88397166,"Alimentos, bebidas y tabaco",0.04637,0.008292798
+Otros chiles frescos,21.37367202,"Alimentos, bebidas y tabaco",0.09132,0.019518437
+Pepino,26.86709661,"Alimentos, bebidas y tabaco",0.03996,0.010736092
+Limón,31.92095808,"Alimentos, bebidas y tabaco",0.20734,0.066184914
+Juguetes,-1.137435394,Educación y esparcimiento,0.06405,-0.000728527
+Material y aparatos fotográficos,-0.365200614,Educación y esparcimiento,0.08165,-0.000298186
+Servicio de televisión de paga,0.646768599,Educación y esparcimiento,0.81908,0.005297552
+"Películas, música y videojuegos",1.325158228,Educación y esparcimiento,0.06147,0.000814575
+Servicio de Internet,1.44638521,Educación y esparcimiento,0.41758,0.006039815
+Club deportivo,2.177786751,Educación y esparcimiento,0.13633,0.002968977
+Artículos deportivos,2.258283565,Educación y esparcimiento,0.01192,0.000269187
+Centro nocturno,2.392996643,Educación y esparcimiento,0.46151,0.011043919
+Carrera corta,2.485678394,Educación y esparcimiento,0.11036,0.002743195
+Otras diversiones y espectáculos deportivos,2.535613808,Educación y esparcimiento,0.39557,0.010030128
+Otros libros,2.564292734,Educación y esparcimiento,0.15869,0.004069276
+Cine,2.652838232,Educación y esparcimiento,0.57581,0.015275308
+Libros de texto,2.668103561,Educación y esparcimiento,0.11793,0.003146495
+Material escolar,3.602540674,Educación y esparcimiento,0.33907,0.012215135
+Enseñanza adicional,3.611730101,Educación y esparcimiento,0.23514,0.008492622
+Guarderías y estancias infantiles,4.034276432,Educación y esparcimiento,0.08232,0.003321016
+Preparatoria,4.179566563,Educación y esparcimiento,0.93883,0.039239025
+Preescolar,4.230675752,Educación y esparcimiento,0.36953,0.015633616
+Universidad,4.305035777,Educación y esparcimiento,1.78204,0.07671746
+Secundaria,4.31721016,Educación y esparcimiento,0.6646,0.028692179
+Hoteles,4.457523455,Educación y esparcimiento,0.08508,0.003792461
+Periódicos,4.53130071,Educación y esparcimiento,0.12049,0.005459764
+Revistas,4.53130071,Educación y esparcimiento,0.03667,0.001661628
+Alimento para mascotas,4.642628641,Educación y esparcimiento,0.14197,0.00659114
+Primaria,4.669074201,Educación y esparcimiento,0.9276,0.043310332
+Instrumentos musicales y otros,4.810913238,Educación y esparcimiento,0.01672,0.000804385
+Servicios turísticos en paquete,6.329101869,Educación y esparcimiento,0.54385,0.034420821
+Computadoras,-1.359454773,"Muebles, aparatos y accesorios domésticos",0.29685,-0.004035541
+Jabón para lavar,-0.639617771,"Muebles, aparatos y accesorios domésticos",0.13814,-0.000883568
+Blanqueadores,-0.426726844,"Muebles, aparatos y accesorios domésticos",0.21189,-0.000904192
+Licuadoras,-0.278296435,"Muebles, aparatos y accesorios domésticos",0.02359,-6.57E-05
+Planchas eléctricas,0.212039767,"Muebles, aparatos y accesorios domésticos",0.01668,3.54E-05
+Televisores,0.394183135,"Muebles, aparatos y accesorios domésticos",0.33101,0.001304786
+Suavizantes y limpiadores,0.865429194,"Muebles, aparatos y accesorios domésticos",0.52161,0.004514165
+Colchas y cobijas,1.043924489,"Muebles, aparatos y accesorios domésticos",0.0837,0.000873765
+Velas y veladoras,1.432452897,"Muebles, aparatos y accesorios domésticos",0.04312,0.000617674
+Equipos y reproductores de audio,1.750288265,"Muebles, aparatos y accesorios domésticos",0.07489,0.001310791
+Cerillos,2.188952977,"Muebles, aparatos y accesorios domésticos",0.0341,0.000746433
+Comedores y antecomedores,2.609803903,"Muebles, aparatos y accesorios domésticos",0.06543,0.001707595
+Desodorantes ambientales,3.029152748,"Muebles, aparatos y accesorios domésticos",0.09008,0.002728661
+Detergentes,3.029152748,"Muebles, aparatos y accesorios domésticos",0.76351,0.023127884
+"Loza, cristalería y cubiertos",3.181790422,"Muebles, aparatos y accesorios domésticos",0.05492,0.001747439
+"Escobas, fibras y estropajos",3.287859456,"Muebles, aparatos y accesorios domésticos",0.12966,0.004263039
+Calentadores para agua,3.405569917,"Muebles, aparatos y accesorios domésticos",0.00852,0.000290155
+Cortinas,3.423774955,"Muebles, aparatos y accesorios domésticos",0.01868,0.000639561
+Horno de microondas,3.646167672,"Muebles, aparatos y accesorios domésticos",0.01735,0.00063261
+Refrigeradores,3.884923645,"Muebles, aparatos y accesorios domésticos",0.18684,0.007258591
+Otros textiles para el hogar,3.912090234,"Muebles, aparatos y accesorios domésticos",0.05157,0.002017465
+Lavadoras de ropa,3.978570422,"Muebles, aparatos y accesorios domésticos",0.11392,0.004532387
+Salas,4.300533132,"Muebles, aparatos y accesorios domésticos",0.10728,0.004613612
+Muebles diversos para el hogar,4.404204013,"Muebles, aparatos y accesorios domésticos",0.04871,0.002145288
+Aparatos de aire acondicionado,4.428188296,"Muebles, aparatos y accesorios domésticos",0.04342,0.001922719
+Plaguicidas,4.49867142,"Muebles, aparatos y accesorios domésticos",0.09944,0.004473479
+Reproductores de video,4.501327496,"Muebles, aparatos y accesorios domésticos",0.03144,0.001415217
+Muebles para cocina,4.515820983,"Muebles, aparatos y accesorios domésticos",0.04428,0.001999606
+Utensilios de plástico para el hogar,4.728763724,"Muebles, aparatos y accesorios domésticos",0.02063,0.000975544
+Focos,4.965195939,"Muebles, aparatos y accesorios domésticos",0.0661,0.003281995
+Otros aparatos eléctricos,5.110612869,"Muebles, aparatos y accesorios domésticos",0.03128,0.0015986
+Recámaras,5.231163014,"Muebles, aparatos y accesorios domésticos",0.10409,0.005445118
+Colchones,5.423678304,"Muebles, aparatos y accesorios domésticos",0.16606,0.00900656
+Sábanas,5.468035635,"Muebles, aparatos y accesorios domésticos",0.03458,0.001890847
+Pilas,5.970291456,"Muebles, aparatos y accesorios domésticos",0.03311,0.001976764
+Otros utensilios de cocina,6.001507525,"Muebles, aparatos y accesorios domésticos",0.06598,0.003959795
+Baterías de cocina,6.943428267,"Muebles, aparatos y accesorios domésticos",0.05081,0.003527956
+Estufas,7.077830146,"Muebles, aparatos y accesorios domésticos",0.08013,0.005671465
+Aparatos de telefonía fija,8.058555177,"Muebles, aparatos y accesorios domésticos",0.0244,0.001966287
+Ventiladores,8.938823551,"Muebles, aparatos y accesorios domésticos",0.0517,0.004621372
+Servicios funerarios,2.558188685,Otros servicios,0.16466,0.004212313
+Servicios profesionales,3.03525262,Otros servicios,0.19818,0.006015264
+Expedición de documentos del sector público,3.820563075,Otros servicios,0.07685,0.002936103
+Restaurantes y similares,4.47339848,Otros servicios,3.42579,0.153249238
+"Loncherías, fondas, torterías y taquerías",5.197247405,Otros servicios,3.87536,0.201412047
+Ropa interior para infantes,-0.837507962,"Ropa, calzado y accesorios",0.05711,-0.000478301
+Otras prendas para hombre,0.174477958,"Ropa, calzado y accesorios",0.0286,4.99E-05
+Medias y pantimedias,0.32902663,"Ropa, calzado y accesorios",0.01243,4.09E-05
+Zapatos de material sintético,1.059962818,"Ropa, calzado y accesorios",0.08761,0.000928633
+Ropa de abrigo,1.069504114,"Ropa, calzado y accesorios",0.27279,0.0029175
+Zapatos para mujer,1.129468697,"Ropa, calzado y accesorios",0.35216,0.003977537
+Camisetas para bebés,1.133067131,"Ropa, calzado y accesorios",0.01564,0.000177212
+Ropa para bebés,1.133067131,"Ropa, calzado y accesorios",0.1927,0.00218342
+"Vestidos, faldas y pantalones para niñas",1.276497696,"Ropa, calzado y accesorios",0.26549,0.003388974
+Vestidos y faldas para mujer,1.364800345,"Ropa, calzado y accesorios",0.1316,0.001796077
+Trajes,1.386973035,"Ropa, calzado y accesorios",0.10003,0.001387389
+Pantalones para niño,1.482553555,"Ropa, calzado y accesorios",0.13294,0.001970907
+Blusas y playeras para mujer,1.665305971,"Ropa, calzado y accesorios",0.31542,0.005252708
+Otras prendas para mujer,1.696217116,"Ropa, calzado y accesorios",0.03676,0.000623529
+Pantalones para mujer,1.868503166,"Ropa, calzado y accesorios",0.32285,0.006032462
+"Bolsas, maletas y cinturones",2.021611972,"Ropa, calzado y accesorios",0.13739,0.002777493
+Camisas,2.411478783,"Ropa, calzado y accesorios",0.35191,0.008486235
+Camisas y playeras para niños,2.411478783,"Ropa, calzado y accesorios",0.11909,0.00287183
+Zapatos tenis,2.415667012,"Ropa, calzado y accesorios",0.62638,0.015131255
+Zapatos para niños y niñas,2.475623772,"Ropa, calzado y accesorios",0.38983,0.009650724
+Otros gastos del calzado,2.784446368,"Ropa, calzado y accesorios",0.0111,0.000309074
+Servicio de tintorería,2.854084278,"Ropa, calzado y accesorios",0.14734,0.004205208
+Zapatos para hombre,2.924983715,"Ropa, calzado y accesorios",0.30503,0.008922078
+Ropa interior para hombre,3.045898173,"Ropa, calzado y accesorios",0.05478,0.001668543
+Pantalones para hombre,3.098102014,"Ropa, calzado y accesorios",0.4165,0.012903595
+Ropa interior para mujer,3.242158812,"Ropa, calzado y accesorios",0.11674,0.003784896
+Servicio de lavandería,3.310514306,"Ropa, calzado y accesorios",0.12378,0.004097755
+Uniformes escolares,4.135018133,"Ropa, calzado y accesorios",0.41102,0.016995752
+"Relojes, joyas y bisutería",4.142639001,"Ropa, calzado y accesorios",0.05841,0.002419715
+Calcetines,4.482716608,"Ropa, calzado y accesorios",0.02341,0.001049404
+Calcetines y calcetas,4.482716608,"Ropa, calzado y accesorios",0.04139,0.001855396
+Productos para el cabello,-1.068244104,Salud y cuidado personal,0.68759,-0.00734514
+Cremas para la piel,0.266756207,Salud y cuidado personal,0.31909,0.000851192
+Desodorantes personales,0.323627605,Salud y cuidado personal,0.37332,0.001208167
+Estudios médicos de gabinete,0.787996834,Salud y cuidado personal,0.11824,0.000931727
+Artículos de maquillaje,1.063340712,Salud y cuidado personal,0.1647,0.001751322
+Antigripales,1.389949464,Salud y cuidado personal,0.02824,0.000392522
+Análisis clínicos,1.442250424,Salud y cuidado personal,0.04755,0.00068579
+Otros artículos de tocador,1.613889338,Salud y cuidado personal,0.08818,0.001423128
+Lociones y perfumes,1.784807508,Salud y cuidado personal,0.66476,0.011864686
+Dermatológicos,2.045458361,Salud y cuidado personal,0.0109,0.000222955
+Jabón de tocador,2.357490434,Salud y cuidado personal,0.31038,0.007317179
+Atención médica durante el parto,2.411943167,Salud y cuidado personal,0.13192,0.003181835
+Material de curación,2.65882418,Salud y cuidado personal,0.02842,0.000755638
+"Lentes, aparatos para sordera y ortopédicos",2.909392434,Salud y cuidado personal,0.13944,0.004056857
+Sala de belleza,3.078350718,Salud y cuidado personal,0.14612,0.004498086
+Corte de cabello,3.236496848,Salud y cuidado personal,0.41701,0.013496516
+Hospitalización parto,3.412767438,Salud y cuidado personal,0.09651,0.003293662
+Hospitalización general,3.45434122,Salud y cuidado personal,0.23776,0.008213042
+Consulta médica,3.528397871,Salud y cuidado personal,0.42464,0.014982989
+Operación quirúrgica,4.09332641,Salud y cuidado personal,0.17028,0.006970116
+Pasta dental,4.108177503,Salud y cuidado personal,0.39911,0.016396147
+Expectorantes y descongestivos,4.198991304,Salud y cuidado personal,0.01766,0.000741542
+Consulta y prótesis dental,4.365114044,Salud y cuidado personal,0.15483,0.006758506
+Antiinflamatorios,4.623821878,Salud y cuidado personal,0.0153,0.000707445
+Gastrointestinales,4.856726566,Salud y cuidado personal,0.03818,0.001854298
+Analgésicos,4.970964952,Salud y cuidado personal,0.06156,0.003060126
+Medicamentos para diabetes,5.127451639,Salud y cuidado personal,0.04675,0.002397084
+Nutricionales,5.285600151,Salud y cuidado personal,0.05209,0.002753269
+Otros Medicamentos,5.376195095,Salud y cuidado personal,0.15976,0.008589009
+Medicamentos para alergias,5.498507721,Salud y cuidado personal,0.01773,0.000974885
+Pañales,5.641671795,Salud y cuidado personal,0.39038,0.022023958
+Medicinas homeopáticas y naturistas,5.663016229,Salud y cuidado personal,0.02716,0.001538075
+Cardiovasculares,5.737663476,Salud y cuidado personal,0.06169,0.003539565
+Navajas y máquinas de afeitar,5.840401083,Salud y cuidado personal,0.19542,0.011413312
+Antibióticos,6.260744379,Salud y cuidado personal,0.09548,0.005977759
+Papel higiénico y pañuelos desechables,6.3026366,Salud y cuidado personal,0.58718,0.037007822
+Servilletas de papel,8.835524527,Salud y cuidado personal,0.14703,0.012990872
+Toallas,9.544972758,Salud y cuidado personal,0.02189,0.002089395
+Toallas sanitarias,9.544972758,Salud y cuidado personal,0.21646,0.020661048
+Transporte aéreo,-4.495323048,Transporte,0.28006,-0.012589602
+Trámites vehiculares,-3.856917237,Transporte,0.44695,-0.017238492
+Metro o transporte eléctrico,0.261257617,Transporte,0.22606,0.000590599
+Aceites lubricantes,1.048027659,Transporte,0.0958,0.00100401
+Taxi,1.814683596,Transporte,0.71775,0.013024892
+Reparación de automóvil,1.991786628,Transporte,0.13026,0.002594501
+Colectivo,2.083472958,Transporte,1.88223,0.039215753
+Neumáticos,2.383814969,Transporte,0.21081,0.00502532
+Acumuladores,2.486622074,Transporte,0.02756,0.000685313
+Automóviles,2.890479477,Transporte,2.89579,0.083702216
+Mantenimiento de automóvil,2.954163816,Transporte,0.19812,0.005852789
+Gasolina de bajo octanaje,3.238833312,Transporte,3.79455,0.122899149
+Otras refacciones,3.308126065,Transporte,0.06308,0.002086766
+Cuotas de autopistas,3.385588314,Transporte,0.06486,0.002195893
+Lavado y engrasado de automóvil,4.165671681,Transporte,0.13621,0.005674061
+Gasolina de alto octanaje,4.246542997,Transporte,0.44534,0.018911555
+Autobús urbano,4.34117555,Transporte,0.99512,0.043199906
+Estacionamiento,4.470786395,Transporte,0.04249,0.001899637
+Autobús foráneo,4.541169562,Transporte,0.41772,0.018969373
+Seguro de automóvil,4.899872895,Transporte,0.42149,0.020652474
+Bicicletas y motocicletas,8.465313702,Transporte,0.0876,0.007415615
+Larga distancia nacional,-100,Vivienda,0.09646,-0.09646
+Larga distancia internacional,-40.6895046,Vivienda,0.04935,-0.020080271
+Servicio de telefonía móvil,-9.884368181,Vivienda,2.11388,-0.208943682
+Servicio telefónico local fijo,-4.3240763,Vivienda,1.29331,-0.055923711
+Gas doméstico natural,-3.740367362,Vivienda,0.24716,-0.009244692
+Electricidad,-2.662185233,Vivienda,2.81045,-0.074819385
+Renta de vivienda,2.081825101,Vivienda,3.38022,0.070370268
+Servicio doméstico,2.374338741,Vivienda,1.40069,0.033257125
+Otros servicios para el hogar,2.571998962,Vivienda,0.56427,0.014513019
+Gas doméstico LP,4.180184403,Vivienda,1.48476,0.062065706
+Derechos por el suministro de agua,4.516696104,Vivienda,0.89863,0.040588386
+Vivienda propia,4.516696104,Vivienda,14.14927,0.639079527

@@ -1,0 +1,689 @@
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+
+#interactiveFreeFormMain {
+    position: relative;
+    width: 970px;
+    height: 550px;
+    margin-top: 30px;
+}
+#bubbleTitle {
+  
+
+  font-size: 1.8em;
+  font-weight: 300;
+  line-height: 1em;
+  font-style: italic;
+  text-align: center;
+   font-family: "Ionic-light";
+    color: #555555;
+	
+	margin: 0 auto;
+}
+
+
+#numericoContainer {
+    position: relative;
+    width: 970px;
+    height: 550px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.numerico {
+   font-family: 'Libre Baskerville', serif;
+}
+.numerico text{
+	font-size: 14px;
+	font-style: italic;
+}
+#numericoChartFrame {
+    width: 970px;
+    height: 550px;
+    -webkit-transition: height ease-in-out 1s;
+    -moz-transition: height ease-in-out 1s;
+    -o-transition: height ease-in-out 1s;
+    -ms-transition: height ease-in-out 1s;
+}
+
+#numericoChart {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#numerico-error {
+}
+
+#numerico-error p {
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 10px;
+    border: solid 1px #CCC;
+    background: #ffd;
+    padding: 10px;
+}
+
+#numerico-error a {
+    text-decoration: underline;
+}
+
+#numerico-chartCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+	margin-top:10px;
+	margin-bottom:30px;
+}
+
+#numerico-chartCanvas svg {
+    height: 100%;
+    overflow: hidden;
+}
+
+#numerico-tooltipContainer {
+    position: absolute;
+    bottom: 0;
+    width: 230px;
+    left: -125px;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 10px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.9);
+    color: #000;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    border: 1px solid rgba(200,200,200,0.85);
+    text-align: center;
+}
+
+#numerico-tooltip {
+    text-align: center;
+    z-index: 1000;
+    position: absolute;
+    display: none;
+}
+
+#numerico-tooltip .numerico-tail {
+    position: absolute;
+    bottom: -8px;
+    left: 105px;
+    width: 40px;
+    height: 8px;
+    background: url(http://graphics8.nytimes.com/packages/images/newsgraphics/2012/0202-federal-budget/tail_white.png) 50% 0;
+}
+
+#numerico-tooltip .numerico-department {
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 10px;
+    margin-bottom: 2px;
+    color: #666;
+    text-align: center;
+}
+
+#numerico-tooltip .numerico-rule {
+    height: 1px;
+    margin: 1px auto 3px;
+    background: #ddd;
+    width: 130px;
+}
+
+#numerico-tooltip .numerico-discretion {
+    color: #666;
+    /*   text-transform:uppercase;*/
+    font-size: 11px;
+    text-align: center;
+    font-style: italic;
+}
+
+#numerico-tooltip .numerico-name {
+    text-align: left;
+    font-size: 13px;
+    /*  width:170px;*/
+    text-align: center;
+
+}
+
+#numerico-tooltip .numerico-value {
+    /*  position:absolute;*/
+    text-align: center;
+    right: 10px;
+    top: 28px;
+    font-size: 16px;
+    /*  width:100px;*/
+    text-align: center;
+    overflow: hidden;
+    font-weight: 700;
+}
+
+#numerico-tooltip .numerico-change {
+    padding-left: 10px;
+    /*  width:110px;  */
+    font-size: 16px;
+    text-align: right;
+    overflow: hidden;
+    /*  position:absolute;*/
+    font-weight: 700;
+    color: #666;
+    text-align: center;
+    display: inline;
+}
+
+#numerico-tooltip .numerico-valuesContainer {
+    padding-top: 7px;
+}
+
+#numerico-tooltip.numerico-minus .numerico-change {
+    color: #900;
+}
+
+#numerico-tooltip.numerico-plus .numerico-change {
+    color: #090;
+}
+
+/* Navigation */
+.numerico-navBar {
+    z-index: 100;
+    position: absolute;
+    width: 950px;
+    left: 0px;
+    top: 0px;
+}
+
+.numerico-navigation {
+    margin-top: 10px;
+    padding: 0;
+}
+
+.numerico-navigation li {
+	font-size:1em;
+    width: 300px;
+    height: 20px;
+    margin-left: 2px;
+	margin-top: 5px;
+    float: left;
+    list-style: none;
+    padding-top: 4px;
+    border: 0px solid #0968e0;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 1px;
+    color: #06479d;
+}
+
+#numericoNavAll {
+    margin-left: 0px;
+}
+.numerico-navigation li:hover {
+text-decoration:underline;
+}
+
+.numerico-navigation li.selected {
+    font-color:black;
+}
+
+/*Category List*/
+#numerico-categoryBrowser li {
+    cursor: pointer;
+    background-image: none;
+    background-color: none;
+    border-bottom: solid 1px #f0f0f0;
+    padding: 3px;
+    margin: 0 0 1px;
+}
+
+#numerico-categoryBrowser li:hover {
+    text-decoration:underline;
+}
+
+/* Scoop Fixes */
+span.noWrap.feedback {
+    white-space: normal;
+}
+
+#interactiveFooter {
+    border-top: 1px solid #DDD;
+    margin-top: 10px;
+    padding-top: 12px !important;
+}
+
+div.storyHeader h1 {
+    font-size: 26px !important;
+    margin-bottom: 4px !important;
+    margin-top: 3px !important;
+}
+
+.ledeStory div.storySummary .summary {
+    line-height: 25px;
+    font-size: 15px;
+    /*  display: none;*/
+}
+
+.ledeStory .insetHFullWidth .storyHeader .dateline {
+    line-height: 2.4em;
+    margin-bottom: 3px;
+    margin-top: 0;
+}
+
+.insetHFullWidth #articleToolsTop {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/********************************
+** FILE: overlays.css
+********************************/
+/*Overlays*/
+#numerico-overlays {
+    position: absolute;
+    z-index: 40;
+}
+
+.numerico-overlay {
+    position: absolute;
+    display: none;
+    color: #666;
+}
+
+.numerico-overlay h5 {
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.numerico-overlay p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.45em;
+}
+
+.numerico-overlaySVG {
+    width: 970px;
+    height: 850px;
+    position: absolute;
+    z-index: 0;
+}
+
+/*Start*/
+.numerico-overview {
+    position: absolute;
+    width: 275px;
+    top: 100px;
+    left: 10px;
+}
+
+.numerico-overview p {
+    font-size: 13px;
+}
+
+
+.numerico-aside {
+    position: absolute;
+    width: 125px;
+    left: 775px;
+    top: 240px;
+    text-align: center;
+}
+
+.numerico-increasesLabel {
+    position: absolute;
+    top: 100px;
+    left: 540px;
+    width: 60px;
+    border-top: dashed 1px rgba(0,0,0,0.2);
+}
+
+.numerico-increasesLabel span {
+    position: absolute;
+    right: -280px;
+    top: -10px;
+    width: 250px;
+}
+
+.numerico-decreasesLabel {
+    position: absolute;
+    top: 470px;
+    left: 560px;
+    width: 60px;
+    border-top: dashed 1px rgba(0,0,0,0.2);
+}
+
+.numerico-decreasesLabel span {
+    position: absolute;
+    right: -280px;
+    top: -10px;
+    width: 250px;
+}
+
+#numerico-deficitCircle {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 60px;
+    left: 700px;
+}
+
+.numerico-deficitCircle {
+    stroke-width: 1;
+    stroke: #999;
+    stroke-dasharray: 4 4;
+    fill: none;
+}
+
+#numerico-colorKey {
+    position: absolute;
+    top: 210px;
+    left: 10px;
+    width: 150px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#numerico-sizeKey {
+    position: relative;
+    height: 110px;
+    width: 200px;
+}
+
+#numerico-scaleKey {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.numerico-circleKeyLabel {
+    position: absolute;
+    border-top: solid 1px #DDD;
+    width: 40px;
+}
+
+#numerico-sizeKey .numerico-circleKeyLabel span {
+    font-size: 10px;
+    color: #999;
+    position: absolute;
+    display: block;
+    left: 50px;
+    top: -8px;
+    width: 80px;
+    z-index: 100;
+}
+
+.numerico-scaleKeyCircle {
+    stroke-width: 1;
+    stroke: #999;
+    stroke-dasharray: 2 2;
+    fill: none;
+}
+
+#numerico-colorKey ul {
+    margin: 0;
+    padding: 0;
+}
+
+#numerico-colorKey p {
+    margin-bottom: 8px;
+}
+
+#numerico-colorKey li {
+    background-image: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+    display: block;
+    height: 100%;
+}
+
+.numerico-colorSwatches {
+    width: 100%;
+    height: 10px;
+
+}
+
+.numerico-colorSwatches li {
+    width: 19%;
+    border-right: solid #FFF 1px;
+}
+
+.numerico-colorTicks {
+    height: 6px;
+}
+
+.numerico-colorTicks li {
+    width: 19%;
+    border-right: solid #CCC 1px;
+}
+
+.numerico-colorLabels {
+    margin-top: 3px;
+    height: 20px;
+    position: relative;
+    left: 8%;
+}
+
+.numerico-colorLabels li {
+    width: 19%;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1em;
+    padding: 4px 0 0 !important;
+    margin: 0;
+}
+
+/*relevant*/
+#numerico-relevantOverlay {
+}
+
+.numerico-discretionaryExplainer {
+    text-align: center;
+    left: 550px;
+    top: 100px;
+    position: absolute;
+    width: 340px;
+}
+
+.numerico-relevantExplainer {
+    text-align: center;
+    left: 150px;
+    top: 80px;
+    position: absolute;
+    width: 340px;
+}
+
+.numerico-discretionaryAside {
+    position: absolute;
+    left: 800px;
+    top: 120px;
+    width: 130px;
+}
+
+.numerico-relevantAside {
+    position: absolute;
+    left: 30px;
+    top: 120px;
+    width: 140px;
+}
+
+/*By Change*/
+#numerico-discretionaryIntro {
+    top: 80px;
+    left: 10px;
+    width: 500px;
+    position: absolute;
+}
+
+.numerico-discretionaryTickLabel {
+    width: 200px;
+    position: absolute;
+    left: 10px;
+}
+
+.numerico-discretionaryTickLabel p {
+    position: relative;
+    top: -6px;
+    font-size: 10px;
+}
+
+.numerico-discretionaryTick {
+    position: absolute;
+    border-top: dashed 1px #CCC;
+    left: 60px;
+    width: 900px;
+}
+
+.numerico-discretionaryTick p {
+    font-size: 10px;
+    text-align: left;
+    position: absolute;
+    left: -50px;
+    width: 40px;
+	top: -5px;
+
+}
+
+.numerico-discretionaryZeroTick {
+    border-top: solid 1px #AAA;
+    left: 10px;
+    width: 950px;
+}
+
+/*Topics*/
+.numerico-departmentAnnotation {
+    position: absolute;
+    z-index: 1000;
+}
+
+.numerico-departmentAnnotation p {
+    font-size: 12px;
+    line-height: 1.2em;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.numerico-departmentAnnotation p.total {
+    font-weight: 700;
+    margin-bottom: .3em;
+    color: #000;
+}
+
+.numerico-departmentAnnotation p.total {
+    font-weight: 700;
+}
+
+.numerico-departmentAnnotation.numerico-row0 p {
+    font-size: 14px;
+}
+
+.numerico-departmentAnnotation.numerico-row0 p.total {
+    font-size: 16px;
+}
+
+.numerico-departmentAnnotation.numerico-row1 p {
+    font-size: 11px;
+}
+
+.numerico-departmentAnnotation.numerico-row1 p.total {
+    font-size: 13px;
+}
+
+.numerico-departmentAnnotation.numerico-row2 p {
+    font-size: 10px;
+}
+
+.numerico-departmentAnnotation.numerico-row2 p.total {
+    font-size: 12px;
+}
+
+.numerico-departmentAnnotation.numerico-row3 p {
+    font-size: 10px;
+}
+
+.numerico-departmentAnnotation.numerico-row3 p.total {
+    font-size: 12px;
+}
+
+.numerico-departmentAnnotation.numerico-row4 p {
+    font-size: 10px;
+}
+
+.numerico-departmentAnnotation.numerico-row4 p.total {
+    font-size: 12px;
+}
+
+/*Topics*/
+#numerico-departmentOverlay p.numerico-emptyCircleLabel {
+    position: absolute;
+    left: 125px;
+    top: 280px;
+    width: 80px;
+    text-align: center;
+    color: #999;
+    font-size: 11px;
+    line-height: 1.45em;
+    font-style: italic;
+}
+
+/********************************
+** FILE: color_key.css
+********************************/
+.change-decrease3 {
+    background-color: #08306b;
+}
+
+.change-decrease2 {
+    background-color: #D63431;
+}
+
+.change-decrease1 {
+    background-color: #E85D75;
+}
+
+.change-same {
+    background-color: #FFFFFF;
+}
+
+.change-increase1 {
+    background-color: #84DCC6;
+}
+
+.change-increase2 {
+    background-color: #64C98D;
+}
+
+.change-increase3 {
+    background-color: #b2182b;
+}
+
+/*text color for changes*/
+.change-decrease3 span.label {
+    color: #eeb0a2;
+}
+
+.change-decrease2 span.label {
+    color: #f8d0ca;
+}
+
+.change-decrease1 span.label {
+    color: #f3dfdd;
+}
+
+.change-same span.label {
+    color: #FFF;
+}
+
+.change-increase1 span.label {
+    color: #e2e8db;
+}
+
+.change-increase2 span.label {
+    color: #d3dbc9;
+}
+
+.change-increase3 span.label {
+    color: #c5d6b7;
+}

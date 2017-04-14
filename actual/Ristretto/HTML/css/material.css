@@ -1,0 +1,117 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@font-face {
+  font-family: 'Ionic-light';
+  src: url('../fonts/Duplicate_Ionic-Light.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Ionic-bold';
+  src: url('../fonts/Duplicate_Ionic-Bold.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+
+@font-face {
+font-family: Alright Sans;
+src: url("../fonts/alrightsans-ultraitalic-v4.otf") format("opentype");
+}
+
+
+.demo-ribbon-a {
+  width: 100%;
+  height: 20vh;
+
+
+  background: -webkit-linear-gradient(90deg, #FF8008 10%, #FFC837 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #FF8008 10%, #FFC837 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #FF8008 10%, #FFC837 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #FF8008 10%, #FFC837 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #FF8008 10%, #FFC837 90%); /* W3C */
+                   
+}
+
+.demo-main {
+
+position: relative;
+top:-18vh;
+  flex-shrink: 0;
+}
+
+.demo-header .mdl-layout__header-row {
+  padding-left: 40px;
+}
+
+.demo-container {
+  width: calc(100% - 16px);
+  margin: 0 auto;
+}
+
+.demo-content {
+  border-radius: 2px;
+  padding: 80px 56px;
+  margin-bottom: 80px;
+}
+
+.demo-layout.is-small-screen .demo-content {
+  padding: 40px 28px;
+}
+
+
+
+
+.demo-footer {
+  padding-left: 40px;
+}
+
+.demo-footer .mdl-mini-footer--link-list a {
+  font-size: 13px;
+}
+h2{
+
+left: 10px;
+font-family: 'Alright Sans', sans;
+font-size: 6em;
+margin-top:0px;
+line-height: 1.2em;
+
+}
+
+h2 span{
+ background-color: white;
+box-shadow: 0.625rem 0 0 #fff;
+
+}
+h3{
+margin-bottom: 1em;
+margin-top: 0px;
+}
+p{
+text-align:justify;
+ color: #555555;
+ font-size: 21px;
+ font-weight: 120;
+ line-height: 1.4em;
+ font-family: "Meta-Serif";
+}
+
+p em{
+  font-size: 1.7em;
+  font-weight: 300;
+  line-height: 1.5em;
+  font-style: italic;
+  font-family: "Meta-Serif";
+ }

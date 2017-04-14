@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+#description {
+  font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #555;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: true;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.bar {
+		box-sizing: border-box;
+		background: #FFC107;
+		width: 100%;
+		padding:0 4px 0 4px;
+	}
+
+</style>
+<body>
+
+<div id="chart"></div>
+	<div style="text-align: center; width: 480px;">
+	<button id="back"><</button>
+	<button id="grupos">Grupos</button>
+	<button id="cambios">Cambios</button>
+	<button id="incidencia">Incidencia</button>
+	<button id="next">></button>
+</div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script>
+
+var margin = {top: 20, right: 20, bottom: 40, left: 40},
+    width = 480 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".0%");
+
+var color = d3.scale.ordinal().range(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f","#e5c494","#b3b3b3"]);
+	
+var x = d3.scale.linear()
+    .range([0,width]);
+
+
+var y = d3.scale.ordinal()
+    .rangeBands([height,0],0,0);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+	.tickFormat(formatPercent);
+	
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("datos.csv", function(error, data) {
+
+  data.forEach(function(d) {
+    d.px_change = +d.px_change/100;
+	d.weight=+d.weight;
+	d.incidence=+d.incidence;
+  });
+
+  y.domain(data.map(function(d) { return d.variable; }));
+  y_init=y.copy();
+  
+  x.domain([d3.min(data, function(d) { return d.px_change; }), d3.max(data, function(d) { return d.px_change; })]);
+  color.domain(_.unique(_.pluck(data, "category")));
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + (height+10) + ")")
+      .call(xAxis) 
+	  .append("text")
+      .attr("y", 22)
+	  .attr("x", 80)
+      .attr("dy", ".71em")
+      //.style("text-anchor", "end")
+      .text("Cambio porcentual respecto al precio del año anterior");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+        .attr("x", function(d) {  if(d.px_change<0) return x(d.px_change); else return x(0); })
+	  .attr("y", function(d) { return y(d.variable); })
+      .attr("height", y.rangeBand())
+	  .style("fill", function(d){return color(d.category)})
+      .attr("width", function(d) { console.log(Math.abs(x(0)-x(d.px_change)));return Math.abs(x(0)-x(d.px_change)) })
+	  .on("mouseover", function(d){
+	  
+	  d3.select(this).style("fill", "black")
+	  description=svg.append("text").attr("id","description")
+	  description
+	  .append("tspan")
+	  .html("Categoría: "+d.category)
+	  .attr("y", 100)
+	  .attr("x", 0)
+	  .attr("dy","1.2em")
+	  
+	  description
+	  .append("tspan")
+	   .text("Producto: "+d.variable)
+	  .attr("dy","1.2em")
+	  .attr("x", 0)
+	  
+	  description
+	  .append("tspan")
+	  .text("Cambio en el precio: "+d3.format(".1f")(d.px_change))
+	  .attr("dy","2em")
+	  .attr("x", 0)
+	  
+	 description
+	  .append("tspan")
+	  .text("Incidencia en la inflación: "+d3.format(".2f")(d.incidence*100)+" pb")
+	  .attr("dy","1.2em")
+	  .attr("x", 0)
+	  
+	  })
+	  .on("mouseout", function(d){
+	  d3.select(this).style("fill", color(d.category))
+	  d3.select("#description").remove()
+	  
+	  });
+
+  d3.select("#grupos").on("click", change);
+  d3.select("#cambios").on("click", change);
+  d3.select("#incidencia").on("click", change);
+  
+  /*var sortTimeout = setTimeout(function() {
+    d3.select("input").property("checked", true).each(change);
+  }, 2000);
+*/
+
+  function change() {
+  //  clearTimeout(sortTimeout);
+ 
+	var y0;
+
+	if(this.id==="grupos"){
+		y0=y_init.copy();
+	} 
+	
+	else if(this.id==="cambios"){
+		y0 = y.domain(data.sort(function(a, b) { return b.px_change - a.px_change; })
+        .map(function(d) { return d.variable; }))
+        .copy();
+	} 
+	
+	else{
+		y0 = y.domain(data.sort(function(a, b) { return b.incidence - a.incidence; })
+        .map(function(d) { return d.variable; }))
+        .copy();
+	}
+
+    svg.selectAll(".bar")
+        .sort(function(a, b) { return y0(a.variable) - y0(b.variable); });
+
+    var transition = svg.transition().duration(700),
+        delay = function(d, i) { return i * 10; };
+
+    transition.selectAll(".bar")
+        .delay(delay)
+        .attr("y", function(d) { return y0(d.variable); });
+
+
+  }
+});
+
+</script>
+</body>

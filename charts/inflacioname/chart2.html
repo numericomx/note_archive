@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+#description {
+  font: 10px sans-serif;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #555;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill-opacity: .9;
+}
+
+.x.axis path {
+  display: true;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+</style>
+<body>
+<div id="chart"></div>
+<div style="text-align: center; width: 480px;">
+<button id="back"><</button>
+<button id="next">></button>
+</div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script>
+
+var slide=1
+var margin = {top: 20, right: 20, bottom: 40, left: 40},
+    width = 480 - margin.left - margin.right,
+    height = 600 - margin.top - margin.bottom;
+
+var formatPercent = d3.format(".0%");
+
+var color = d3.scale.ordinal().range(["#66c2a5","#fc8d62","#8da0cb","#e78ac3","#a6d854","#ffd92f","#e5c494","#b3b3b3"]);
+	
+var x = d3.scale.linear()
+    .range([0,width]);
+
+
+var y = d3.scale.ordinal()
+    .rangeBands([height,0],0,0);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+	.tickFormat(formatPercent);
+	
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("datos.csv", function(error, data) {
+
+var detallex=0;
+  data.forEach(function(d) {
+    d.px_change = +d.px_change/100;
+	d.weight=+d.weight;
+	d.incidence=+d.incidence;
+  });
+
+  		
+  y.domain(data.map(function(d) { return d.variable; }));
+  y_init=y.copy();
+
+  x.domain([d3.min(data, function(d) { return d.px_change; }), d3.max(data, function(d) { return d.px_change; })]);
+   x_init=x.copy(); 
+ color.domain(_.unique(_.pluck(data, "category")));
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + (height+10) + ")")
+      .call(xAxis) 
+	  .append("text")
+      .attr("y", 22)
+	  .attr("x", 80)
+	  .attr("id","labelx")
+      .attr("dy", ".71em")
+      //.style("text-anchor", "end")
+      .text("Cambio porcentual respecto al precio del año anterior");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) {  if(d.px_change<0) return x(d.px_change); else return x(0); })
+	  .attr("y", function(d) { return y(d.variable); })
+      .attr("height", y.rangeBand())
+	  .style("fill", function(d){return color(d.category)})
+      .attr("width", function(d) {return Math.abs(x(0)-x(d.px_change)) })
+	  .on("mouseover", function(d){
+	  
+	  d3.select(this).style("fill", "black")
+	  description=svg.append("text").attr("id","description")
+	  description
+	  .append("tspan")
+	  .html("Categoría: "+d.category)
+	  .attr("y", 100)
+	  .attr("x", detallex)
+	  .attr("dy","1.2em")
+	  
+	  description
+	  .append("tspan")
+	   .text("Producto: "+d.variable)
+	  .attr("dy","1.2em")
+	  .attr("x", detallex)
+	  
+	  description
+	  .append("tspan")
+	  .text("Cambio en el precio: "+d3.format(".1f")(d.px_change))
+	  .attr("dy","2em")
+	  .attr("x", detallex)
+	  
+	 description
+	  .append("tspan")
+	  .text("Incidencia en la inflación: "+d3.format(".2f")(d.incidence*100)+" pb")
+	  .attr("dy","1.2em")
+	  .attr("x", detallex)
+	  
+	  })
+	  .on("mouseout", function(d){
+	  d3.select(this).style("fill", color(d.category))
+	  d3.select("#description").remove()
+	  
+	  });
+
+  d3.select("#back").on("click", change);
+  d3.select("#next").on("click", change);
+
+
+  function change() {
+ 	var y0;
+	if(this.id=="back") slide-=1;
+	else slide+=1;
+	
+	if(slide===1){
+		y0=y_init.copy();
+		
+		 svg.selectAll(".bar")
+        .sort(function(a, b) { return y0(a.variable) - y0(b.variable); });
+		var transition = svg.transition().duration(500),delay = function(d, i) { return i * 10; };
+		transition.selectAll(".bar").delay(delay)
+		.attr("y", function(d) { return y0(d.variable); });
+	} 
+	
+	else if(slide===2){
+		y0 = y.domain(data.sort(function(a, b) { return b.px_change - a.px_change; })
+        .map(function(d) { return d.variable; }))
+        .copy();
+		x0=x_init.copy();
+			
+		svg.selectAll(".bar")
+        .sort(function(a, b) { return y0(a.variable) - y0(b.variable); });
+		var transition = svg.transition().duration(500),delay = function(d, i) { return i * 10; };
+		transition.selectAll(".bar").delay(delay)
+		.attr("y", function(d) { return y0(d.variable); })
+		.attr("x", function(d) {  if(d.px_change<0) return x0(d.px_change); else return x0(0); })
+        .attr("width", function(d) {return Math.abs(x0(0)-x0(d.px_change)) });
+		
+		xAxis.tickFormat(formatPercent);
+	   transition.select(".x.axis")
+      .call(xAxis)
+      .selectAll("g")
+        .delay(delay);
+		
+		d3.select("#labelx").text("Cambio porcentual respecto al precio del año anterior")
+		
+		detallex=0;
+	} 
+	
+	else if(slide===3){
+		sorted_data=data.sort(function(a, b) { return b.incidence - a.incidence; });
+		y0 = y.domain(sorted_data.map(function(d) { return d.variable; })).copy();
+		x0= x.domain([d3.min(_.pluck(data, "incidence")),d3.max(_.pluck(data, "incidence"))]).copy()
+		
+		
+		svg.selectAll(".bar")
+        .sort(function(a, b) { return y0(a.variable) - y0(b.variable); });
+		var transition = svg.transition().duration(500),delay = function(d, i) { return i * 10; };
+		transition.selectAll(".bar").delay(delay)
+		.attr("y", function(d) { return y0(d.variable); })
+		.attr("x", function(d) {  if(d.incidence<0) return x0(d.incidence); else return x0(0); })
+        .attr("width", function(d) {return Math.abs(x0(0)-x0(d.incidence)) })
+		.attr("height", y0.rangeBand());
+	xAxis.tickFormat(d3.format(".2f"));
+	   transition.select(".x.axis")
+      .call(xAxis)
+      .selectAll("g")
+        .delay(delay);
+		//d3.selectAll(".bar").transition()
+		
+		d3.select("#labelx").text("Incidencia  anual en puntos porcentuales").attr("x",100)
+		detallex=200;
+
+	}
+	else if(slide===4){
+		sorted_data=data.sort(function(a, b) { return b.incidence - a.incidence; })
+		sorted_data_10=_.last(sorted_data,10);
+		y0 = y.domain(sorted_data_10.map(function(d) { return d.variable; })).copy();
+	
+	var transition = svg.transition().duration(500),delay = function(d, i) { return (data.length-i) * 10; };
+	
+	
+	transition.selectAll(".bar").filter(function(d,i) { return i>9}).delay(delay)
+		.attr("x", 500);
+
+		
+		
+		transition.selectAll(".bar").filter(function(d,i) { return i<=9}).delay(delay)
+		.attr("y", function(d,i) {return y0(d.variable)})
+		.attr("height", function(d,i){return y0.rangeBand();});
+	
+	}
+	
+	else if(slide===5){
+		sorted_data=data.sort(function(a, b) { return b.incidence - a.incidence; });
+		y0 = y.domain(sorted_data.map(function(d) { return d.variable; })).copy();
+		x0= x.domain([d3.min(_.pluck(data, "incidence")),d3.max(_.pluck(data, "incidence"))]).copy()
+		
+		
+		svg.selectAll(".bar")
+        .sort(function(a, b) { return y0(a.variable) - y0(b.variable); });
+		var transition = svg.transition().duration(500);
+		var delay ;
+		if(this.id=="next")
+		delay= function(d, i) { return i * 10; };
+		else
+		delay= function(d, i) { return (data.length-i) * 10;};
+		transition.selectAll(".bar").delay(delay)
+		.attr("y", function(d) { return y0(d.variable); })
+		.attr("x", function(d) {  if(d.incidence<0) return x0(d.incidence); else return x0(0); })
+        .attr("width", function(d) {return Math.abs(x0(0)-x0(d.incidence)) })
+		.attr("height", y0.rangeBand());
+	xAxis.tickFormat(d3.format(".2f"));
+	   transition.select(".x.axis")
+      .call(xAxis)
+      .selectAll("g")
+        .delay(delay);
+		//d3.selectAll(".bar").transition()
+		
+		
+		d3.select("#labelx").text("Incidencia  anual en puntos porcentuales").attr("x",100)
+		detallex=200;
+		
+		
+
+	}
+	
+	else if(slide===6){
+		sorted_data=data.sort(function(a, b) { return b.incidence - a.incidence; })
+		sorted_data_10=_.first(sorted_data,10);
+		y0 = y.domain(sorted_data_10.map(function(d) { return d.variable; })).copy();
+		x0= x.domain([d3.min(_.pluck(data, "incidence")),d3.max(_.pluck(data, "incidence"))]).copy()
+		
+	var transition = svg.transition().duration(500);
+	var delay, delay2;
+	if(this.id=="next"){
+	var delay = function(d, i) { return i* 10; };
+	var delay2 = function(d, i) { return (data.length-9+i)* 10; };
+	}
+	else{
+	var delay = function(d, i) { return (data.length-i)* 10; };
+	var delay2 = function(d, i) { return (9-i)* 10; };
+	}
+	
+	transition.selectAll(".bar").filter(function(d,i) { return i<data.length-9}).delay(delay)
+		.attr("x", 500);
+
+
+	transition.selectAll(".bar").filter(function(d,i) { return i>=data.length-9}).delay(delay2)
+		.attr("y", function(d,i) {return y0(d.variable)})
+		.attr("height", function(d,i){return y0.rangeBand();})
+		.attr("x", function(d) {  if(d.incidence<0) return x0(d.incidence); else return x0(0); });
+		
+	
+		
+		d3.select("#labelx").text("Incidencia  anual en puntos porcentuales").attr("x",100)
+		detallex=200;
+	d3.select(".x.axis").style("display","block");
+	}
+
+	else if(slide===7){
+	
+	var transition = svg.transition().duration(500);
+	var delay = function(d, i) { return i* 50; };
+	
+		transition.selectAll(".bar").filter(function(d,i) { return i>=data.length-9}).delay(delay)
+		.attr("x", 500);
+		
+		transition.select(".x.axis").delay(600).style("display","none");
+		
+
+  }
+}
+});
+
+</script>
+</body>
